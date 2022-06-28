@@ -6,4 +6,5 @@ public class Person {
     private String sex;
     private int digitalWallet;
 
+
 }

@@ -9,7 +9,7 @@ public class MySQLConnection {
     }
 
     public static boolean executeSQL(Connection connection, String sqlCmd) /*throws Exception*/ {
-//        try {
+        //        try {
         //  Class.forName("com.mysql.cj.jdbc.Driver");
         //Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/registration", "root", "@Pouria1381");
 
