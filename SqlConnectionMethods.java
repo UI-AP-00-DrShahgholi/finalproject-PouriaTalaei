@@ -1,4 +1,6 @@
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class SqlConnectionMethods {
     public void insertPeople(int iD, int nationalCode, int name, int age, int sex, int digitalWallet) throws Exception {
@@ -29,6 +31,38 @@ public class SqlConnectionMethods {
             System.out.println("Delete not successfully!");
     }
 
+    public void loadPeople(int iD) throws Exception {
+        Connection connection = MySQLConnection.connectionSql();
+        String sqlCmd = String.format("SELECT * from people WHERE ID =%s", iD);
+        ResultSet resultSet = MySQLConnection.executeQuerySQL(connection, sqlCmd);
+        Person person = new Person();
+        person = setPerson(resultSet);
+        printPerson(person);
+
+//NationalCode,Name,Age,Sex,DigitalWallet
+
+    }
+
+    public Person setPerson(ResultSet resultSet) throws SQLException {
+        Person person;
+        person = new Person();
+        person.setNationalCode(Integer.parseInt(resultSet.getString("NationalCode")));
+        person.setName(resultSet.getString("Name"));
+        person.setAge(Integer.parseInt(resultSet.getString("Age")));
+        person.setSex(resultSet.getString("Sex"));
+        person.setDigitalWallet(Integer.parseInt(resultSet.getString("DigitalWallet")));
+        return person;
+    }
+
+    public void printPerson(Person person) {
+        System.out.println("National Code : " + person.getNationalCode());
+        System.out.println("Name : " + person.getName());
+        System.out.println("Age : " + person.getAge());
+        System.out.println("Sex : " + person.getSex());
+        System.out.println("Digital Wallet Balance : " + person.getDigitalWallet());
+    }
+
+
     public void insertEstate(int id, int documentRegistrationCode, int ownerNationalCode, String address, String purchaseDate, int cost) throws Exception {
         Connection connection = MySQLConnection.connectionSql();
         String sqlCmd = String.format("INSERT INTO estate (ID,DocumentRegistrationCode,OwnerNationalCode,Address,PurchaseDate,Cost) values (%s,%s,%s,'%s','%s',%s)", id, documentRegistrationCode, ownerNationalCode, address, purchaseDate, cost);
@@ -58,6 +92,37 @@ public class SqlConnectionMethods {
             System.out.println("Delete not successfully!");
     }
 
+
+    public void loadEstate(int iD) throws Exception {
+        Connection connection = MySQLConnection.connectionSql();
+        String sqlCmd = String.format("SELECT * from estate WHERE ID =%s", iD);
+        ResultSet resultSet = MySQLConnection.executeQuerySQL(connection, sqlCmd);
+        Estate estate = new Estate();
+        estate = setEstate(resultSet);
+        printEstate(estate);
+
+        // ID,DocumentRegistrationCode,OwnerNationalCode,Address,PurchaseDate,Cost
+    }
+
+    public Estate setEstate(ResultSet resultSet) throws SQLException {
+        Estate estate;
+        estate = new Estate();
+        estate.setDocumentRegistrationCode(Integer.parseInt(resultSet.getString("DocumentRegistrationCode")));
+        estate.setOwnerNationalCode(Integer.parseInt(resultSet.getString("OwnerNationalCode")));
+        estate.setAddress(resultSet.getString("Address"));
+        estate.setPurchaseDate(resultSet.getString("PurchaseDate"));
+        estate.setCost(Integer.parseInt(resultSet.getString("Cost")));
+
+
+    }
+
+    public void printEstate(Estate estate) {
+        System.out.println("Document Registration Code : " + estate.getDocumentRegistrationCode());
+        System.out.println("OwnerNationalCode : " + estate.getOwnerNationalCode());
+        System.out.println("Address : " + estate.getAddress());
+        System.out.println("PurchaseDate : " + estate.getPurchaseDate();
+        System.out.println("Cost : " + estate.getCost());
+    }
 
 
     public void getMaxID() throws Exception {

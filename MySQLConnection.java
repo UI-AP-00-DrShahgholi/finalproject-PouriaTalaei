@@ -28,15 +28,15 @@ public class MySQLConnection {
     public static ResultSet executeQuerySQL(Connection connection, String sqlCmd) /*throws Exception*/ {
         try {
             Statement statement = connection.prepareStatement(sqlCmd);
-            ResultSet resultSet = statement.executeQuery(sqlCmd);
-            while (resultSet.next()) {
+            //            while (resultSet.next()) {
+//
+//
+//            }
 
-
-            }
-
-            return resultSet;
+            return statement.executeQuery(sqlCmd);
 
         } catch (Exception e) {
+            return null;
 
         }
     }

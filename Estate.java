@@ -13,6 +13,9 @@ public class Estate {
         this.cost = cost;
     }
 
+    public Estate() {
+    }
+
     public int getDocumentRegistrationCode() {
         return documentRegistrationCode;
     }
