@@ -1,7 +1,9 @@
 public class Estate {
-    private String documentRegistrationCode;
-    private String ownerNationalCode;
+    private int documentRegistrationCode;
+    private int ownerNationalCode;
     private String address;
     private String purchaseDate;
     private int cost;
+
+
 }
