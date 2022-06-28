@@ -7,6 +7,7 @@ public abstract class BankAccount {
 
 
     //ذخیره حساب
+
     public BankAccount(String accountNumber, String ownerNationalCode, int balance, String dateOfOpeningAccount) {
         this.accountNumber = accountNumber;
         this.ownerNationalCode = ownerNationalCode;
