@@ -4,8 +4,7 @@ public class MySQLConnection {
 
     public static Connection connectionSql() throws Exception {
         Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/registration", "root", "@Pouria1381");
-        return connection;
+        return DriverManager.getConnection("jdbc:mysql://localhost:3306/registration", "root", "@Pouria1381");
     }
 
     public static boolean executeSQL(Connection connection, String sqlCmd) /*throws Exception*/ {
@@ -39,12 +38,5 @@ public class MySQLConnection {
             return null;
 
         }
-    }
-
-    int getMaxID() throws SQLException {
-        String sqlCmd = "Select Max(ID) from people";
-
-
-
     }
 }

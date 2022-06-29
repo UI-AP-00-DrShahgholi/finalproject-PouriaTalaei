@@ -2,7 +2,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class SqlConnectionMethods {
+public class AdminManagement {
+
+
     public void insertPeople(int nationalCode, int name, int age, int sex, int digitalWallet) throws Exception {
         Connection connection = MySQLConnection.connectionSql();
         String sqlCmd = String.format("INSERT INTO people (ID,NationalCode,Name,Age,Sex,DigitalWallet) values (%s,%s,'%s',%s,'%s',%s)", getMaxPeopleID() + 1, nationalCode, name, age, sex, digitalWallet);
@@ -10,7 +12,6 @@ public class SqlConnectionMethods {
             System.out.println("insert successfully!");
         else
             System.out.println("insert not successfully!");
-
     }
 
     public void updatePeople(int iD, int nationalCode, int name, int age, int sex, int digitalWallet) throws Exception {
