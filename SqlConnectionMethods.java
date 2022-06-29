@@ -3,9 +3,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class SqlConnectionMethods {
-    public void insertPeople(int iD, int nationalCode, int name, int age, int sex, int digitalWallet) throws Exception {
+    public void insertPeople(int nationalCode, int name, int age, int sex, int digitalWallet) throws Exception {
         Connection connection = MySQLConnection.connectionSql();
-        String sqlCmd = String.format("INSERT INTO people (ID,NationalCode,Name,Age,Sex,DigitalWallet) values (%s,%s,'%s',%s,'%s',%s)", iD, nationalCode, name, age, sex, digitalWallet);
+        String sqlCmd = String.format("INSERT INTO people (ID,NationalCode,Name,Age,Sex,DigitalWallet) values (%s,%s,'%s',%s,'%s',%s)", getMaxPeopleID() + 1, nationalCode, name, age, sex, digitalWallet);
         if (MySQLConnection.executeSQL(connection, sqlCmd))
             System.out.println("insert successfully!");
         else
@@ -63,9 +63,9 @@ public class SqlConnectionMethods {
     }
 
 
-    public void insertEstate(int id, int documentRegistrationCode, int ownerNationalCode, String address, String purchaseDate, int cost) throws Exception {
+    public void insertEstate(int documentRegistrationCode, int ownerNationalCode, String address, String purchaseDate, int cost) throws Exception {
         Connection connection = MySQLConnection.connectionSql();
-        String sqlCmd = String.format("INSERT INTO estate (ID,DocumentRegistrationCode,OwnerNationalCode,Address,PurchaseDate,Cost) values (%s,%s,%s,'%s','%s',%s)", id, documentRegistrationCode, ownerNationalCode, address, purchaseDate, cost);
+        String sqlCmd = String.format("INSERT INTO estate (ID,DocumentRegistrationCode,OwnerNationalCode,Address,PurchaseDate,Cost) values (%s,%s,%s,'%s','%s',%s)", getMaxEstateID() + 1, documentRegistrationCode, ownerNationalCode, address, purchaseDate, cost);
         if (MySQLConnection.executeSQL(connection, sqlCmd))
             System.out.println("insert successfully!");
         else
@@ -112,23 +112,35 @@ public class SqlConnectionMethods {
         estate.setAddress(resultSet.getString("Address"));
         estate.setPurchaseDate(resultSet.getString("PurchaseDate"));
         estate.setCost(Integer.parseInt(resultSet.getString("Cost")));
-
-
+        return estate;
     }
 
     public void printEstate(Estate estate) {
         System.out.println("Document Registration Code : " + estate.getDocumentRegistrationCode());
         System.out.println("OwnerNationalCode : " + estate.getOwnerNationalCode());
         System.out.println("Address : " + estate.getAddress());
-        System.out.println("PurchaseDate : " + estate.getPurchaseDate();
+        System.out.println("PurchaseDate : " + estate.getPurchaseDate());
         System.out.println("Cost : " + estate.getCost());
     }
 
 
-    public void getMaxID() throws Exception {
-
-
+    public int getMaxPeopleID() throws Exception {
+        Connection connection = MySQLConnection.connectionSql();
+        String sqlCmd = "SELECT MAX(ID) from people";
+        ResultSet resultSet = MySQLConnection.executeQuerySQL(connection, sqlCmd);
+        if (resultSet.next()) {
+            return resultSet.getInt(1);
+        } else return 0;
     }
 
 
+    public int getMaxEstateID() throws Exception {
+        Connection connection = MySQLConnection.connectionSql();
+        String sqlCmd = "SELECT MAX(ID) from estate";
+        ResultSet resultSet = MySQLConnection.executeQuerySQL(connection, sqlCmd);
+        if (resultSet.next()) {
+            return resultSet.getInt(1);
+        } else return 0;
+
+    }
 }
