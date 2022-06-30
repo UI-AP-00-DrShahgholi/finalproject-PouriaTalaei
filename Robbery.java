@@ -41,7 +41,7 @@ public class Robbery {
 
     public void backRobbedMoneyProcess() throws Exception {
         for (Account account : bankCustomersAccount) {
-            int robbedMoney = adminManagement.loadBalance(Integer.parseInt(account.getOwnerNationalCode()));
+            int robbedMoney = AdminManagement.loadBalance(account.getOwnerNationalCode());
             backRobbedMoney(robbedMoney, account.getOwnerNationalCode());
         }
     }

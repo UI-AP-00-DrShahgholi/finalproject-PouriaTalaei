@@ -71,12 +71,29 @@ public class AdminManagement {
     }
 
 
-    public static int loadBalance(int nationalCode) throws Exception {
+    public static int loadBalance(String nationalCode) throws Exception {
         Connection connection = MySQLConnection.connectionSql();
         String sqlCmd = String.format("SELECT Balance from accounts WHERE OwnerNationalCode='%s'", nationalCode);
         ResultSet resultSet = MySQLConnection.executeQuerySQL(connection, sqlCmd);
         return resultSet.getInt(1);
     }
+
+    public static int loadCost(int nationalCode) throws Exception {
+        Connection connection = MySQLConnection.connectionSql();
+        String sqlCmd = String.format("SELECT Cost from estate WHERE OwnerNationalCode=%s", nationalCode);
+        ResultSet resultSet = MySQLConnection.executeQuerySQL(connection, sqlCmd);
+        return resultSet.getInt(1);
+    }
+
+    public void updateWalletAfterSell(int ownerNationalCode) throws Exception {
+        Connection connection = MySQLConnection.connectionSql();
+        String sqlCmd = String.format("UPDATE people SET DigitalWallet =%s WHERE NationalCode=%s", AdminManagement.loadDigitalWallet(ownerNationalCode) + loadCost(ownerNationalCode), ownerNationalCode);
+        if (MySQLConnection.executeSQL(connection, sqlCmd)) {
+            System.out.println("Update successfully!");
+        } else
+            System.out.println("Update not successfully!");
+    }
+
 
 
 
