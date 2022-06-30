@@ -71,7 +71,7 @@ public class AdminManagement {
     }
 
 
-    public int loadBalance(int nationalCode) throws Exception {
+    public static int loadBalance(int nationalCode) throws Exception {
         Connection connection = MySQLConnection.connectionSql();
         String sqlCmd = String.format("SELECT Balance from accounts WHERE OwnerNationalCode='%s'", nationalCode);
         ResultSet resultSet = MySQLConnection.executeQuerySQL(connection, sqlCmd);
