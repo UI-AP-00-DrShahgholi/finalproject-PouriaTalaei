@@ -41,7 +41,6 @@ public class AdminManagement {
         printPerson(person);
 
 //NationalCode,Name,Age,Sex,DigitalWallet
-
     }
 
     public Person setPerson(ResultSet resultSet) throws SQLException {
@@ -62,6 +61,24 @@ public class AdminManagement {
         System.out.println("Sex : " + person.getSex());
         System.out.println("Digital Wallet Balance : " + person.getWallet());
     }
+
+
+    public static int loadDigitalWallet(int nationalCode) throws Exception {
+        Connection connection = MySQLConnection.connectionSql();
+        String sqlCmd = String.format("SELECT DigitalWallet from people WHERE NationalCode=%s",nationalCode);
+        ResultSet resultSet = MySQLConnection.executeQuerySQL(connection, sqlCmd);
+        return resultSet.getInt(1);
+    }
+
+
+    public int loadBalance(int nationalCode) throws Exception {
+        Connection connection = MySQLConnection.connectionSql();
+        String sqlCmd = String.format("SELECT Balance from accounts WHERE OwnerNationalCode='%s'", nationalCode);
+        ResultSet resultSet = MySQLConnection.executeQuerySQL(connection, sqlCmd);
+        return resultSet.getInt(1);
+    }
+
+
 
 
     public void insertEstate(int documentRegistrationCode, int ownerNationalCode, String address, String purchaseDate, int cost) throws Exception {
