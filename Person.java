@@ -3,18 +3,18 @@ public class Person {
     private String name;
     private int age;
     private String sex;
-    private int digitalWallet;
-
+    private int wallet;
+//digitalWallet
 
     public Person() {
     }
 
-    public Person(int nationalCode, String name, int age, String sex, int digitalWallet) {
+    public Person(int nationalCode, String name, int age, String sex, int wallet) {
         this.nationalCode = nationalCode;
         this.name = name;
         this.age = age;
         this.sex = sex;
-        this.digitalWallet = digitalWallet;
+        this.wallet = wallet;
     }
 
     public int getNationalCode() {
@@ -49,11 +49,11 @@ public class Person {
         this.sex = sex;
     }
 
-    public int getDigitalWallet() {
-        return digitalWallet;
+    public int getWallet() {
+        return wallet;
     }
 
-    public void setDigitalWallet(int digitalWallet) {
-        this.digitalWallet = digitalWallet;
+    public void setWallet(int wallet) {
+        this.wallet = wallet;
     }
 }

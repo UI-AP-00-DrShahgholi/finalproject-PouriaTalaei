@@ -32,9 +32,9 @@ public class AdminManagement {
             System.out.println("Delete not successfully!");
     }
 
-    public void loadPeople(int iD) throws Exception {
+    public void loadPeople(int nationalCode) throws Exception {
         Connection connection = MySQLConnection.connectionSql();
-        String sqlCmd = String.format("SELECT * from people WHERE ID =%s", iD);
+        String sqlCmd = String.format("SELECT * from people WHERE NationalCode =%s", nationalCode);
         ResultSet resultSet = MySQLConnection.executeQuerySQL(connection, sqlCmd);
         Person person = new Person();
         person = setPerson(resultSet);
@@ -51,7 +51,7 @@ public class AdminManagement {
         person.setName(resultSet.getString("Name"));
         person.setAge(Integer.parseInt(resultSet.getString("Age")));
         person.setSex(resultSet.getString("Sex"));
-        person.setDigitalWallet(Integer.parseInt(resultSet.getString("DigitalWallet")));
+        person.setWallet(Integer.parseInt(resultSet.getString("DigitalWallet")));
         return person;
     }
 
@@ -60,7 +60,7 @@ public class AdminManagement {
         System.out.println("Name : " + person.getName());
         System.out.println("Age : " + person.getAge());
         System.out.println("Sex : " + person.getSex());
-        System.out.println("Digital Wallet Balance : " + person.getDigitalWallet());
+        System.out.println("Digital Wallet Balance : " + person.getWallet());
     }
 
 
