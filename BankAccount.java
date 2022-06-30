@@ -4,6 +4,7 @@ public abstract class BankAccount {
     private int balance;
     private String dateOfOpeningAccount;
     private int negativePoint;
+    boolean beAllowedToGetBankLoan = true;
 
 
     //ذخیره حساب

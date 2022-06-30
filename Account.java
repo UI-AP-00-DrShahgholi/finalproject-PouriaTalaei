@@ -6,6 +6,7 @@ public class Account {
     private int negativePoint;
 
 
+
     public Account(String accountNumber, String ownerNationalCode, int balance, String dateOfOpeningAccount) {
         this.accountNumber = accountNumber;
         this.ownerNationalCode = ownerNationalCode;
