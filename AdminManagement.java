@@ -129,8 +129,6 @@ public class AdminManagement {
         Estate estate = new Estate();
         estate = setEstate(resultSet);
         printEstate(estate);
-
-        // ID,DocumentRegistrationCode,OwnerNationalCode,Address,PurchaseDate,Cost
     }
 
     public Estate setEstate(ResultSet resultSet) throws SQLException {

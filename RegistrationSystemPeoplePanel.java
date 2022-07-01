@@ -18,7 +18,7 @@ public class RegistrationSystemPeoplePanel {
                     break;
 
                 case "2"://update
-                    System.out.println("Enter : NationalCode, Name, Age, Sex, DigitalWallet, ID   to Update information");
+                    System.out.println("Enter : ID, NationalCode, Name, Age, Sex, DigitalWallet  to Update information");
                     adminManagement.updatePeople(input.nextInt(), input.nextInt(), input.next(), input.nextInt(), input.next(), input.nextInt());
                     break;
 
