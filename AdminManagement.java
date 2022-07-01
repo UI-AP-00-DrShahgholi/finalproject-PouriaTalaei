@@ -4,8 +4,7 @@ import java.sql.SQLException;
 
 public class AdminManagement {
 
-
-    public void insertPeople(int nationalCode, int name, int age, int sex, int digitalWallet) throws Exception {
+    public void insertPeople(int nationalCode, String name, int age, String sex, int digitalWallet) throws Exception {
         Connection connection = MySQLConnection.connectionSql();
         String sqlCmd = String.format("INSERT INTO people (ID,NationalCode,Name,Age,Sex,DigitalWallet) values (%s,%s,'%s',%s,'%s',%s)", getMaxPeopleID() + 1, nationalCode, name, age, sex, digitalWallet);
         if (MySQLConnection.executeSQL(connection, sqlCmd))
@@ -14,7 +13,7 @@ public class AdminManagement {
             System.out.println("insert not successfully!");
     }
 
-    public void updatePeople(int iD, int nationalCode, int name, int age, int sex, int digitalWallet) throws Exception {
+    public void updatePeople(int iD, int nationalCode, String name, int age, String sex, int digitalWallet) throws Exception {
         Connection connection = MySQLConnection.connectionSql();
         String sqlCmd = String.format("UPDATE people SET NationalCode=%s , Name ='%s',Age =%s,Sex='%s',DigitalWallet=%s WHERE ID = %s", nationalCode, name, age, sex, digitalWallet, iD);
         if (MySQLConnection.executeSQL(connection, sqlCmd))
@@ -39,8 +38,6 @@ public class AdminManagement {
         Person person = new Person();
         person = setPerson(resultSet);
         printPerson(person);
-
-//NationalCode,Name,Age,Sex,DigitalWallet
     }
 
     public Person setPerson(ResultSet resultSet) throws SQLException {
@@ -65,7 +62,7 @@ public class AdminManagement {
 
     public static int loadDigitalWallet(int nationalCode) throws Exception {
         Connection connection = MySQLConnection.connectionSql();
-        String sqlCmd = String.format("SELECT DigitalWallet from people WHERE NationalCode=%s",nationalCode);
+        String sqlCmd = String.format("SELECT DigitalWallet from people WHERE NationalCode=%s", nationalCode);
         ResultSet resultSet = MySQLConnection.executeQuerySQL(connection, sqlCmd);
         return resultSet.getInt(1);
     }
@@ -93,9 +90,6 @@ public class AdminManagement {
         } else
             System.out.println("Update not successfully!");
     }
-
-
-
 
 
     public void insertEstate(int documentRegistrationCode, int ownerNationalCode, String address, String purchaseDate, int cost) throws Exception {
