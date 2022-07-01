@@ -7,6 +7,8 @@ public class Panel {
         AdminManagement adminManagement = new AdminManagement();
         RegistrationSystemEstatePanel estatePanel = new RegistrationSystemEstatePanel();
         RegistrationSystemPeoplePanel peoplePanel = new RegistrationSystemPeoplePanel();
+        BankSystemPanel bankPanel = new BankSystemPanel();
+        Robbery robbery = new Robbery();
 
         boolean exit = false;
         while (!exit) {
@@ -22,11 +24,11 @@ public class Panel {
                     break;
 
                 case "3":
-
+                    bankPanel.bankPanel();
                     break;
 
                 case "4":
-
+                    robbery.robberyProcess();
                     break;
 
                 case "5":

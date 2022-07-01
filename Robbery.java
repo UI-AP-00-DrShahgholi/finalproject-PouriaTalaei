@@ -30,7 +30,7 @@ public class Robbery {
 
     public void addAccountsToArrayList() throws Exception {
         int maxId = userManagement.getMaxAccountsID();
-        for (int i = 1; i < maxId; i++)
+        for (int i = 1; i <= maxId; i++)
             bankCustomersAccount.add(userManagement.loadAccount(i));
     }
 

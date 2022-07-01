@@ -1,9 +1,12 @@
-public class FreeLoanAccount extends BankAccount{
+public class FreeLoanAccount extends BankAccount {
     private CreditCard creditCard;
 
-    public FreeLoanAccount(String accountNumber, String ownerNationalCode, int balance, String dateOfOpeningAccount,String ownerName, String cardNumber, int cvv2, String expirationDate) {
+    public FreeLoanAccount(String accountNumber, String ownerNationalCode, int balance, String dateOfOpeningAccount, String ownerName, String cardNumber, int cvv2, String expirationDate) {
         super(accountNumber, ownerNationalCode, balance, dateOfOpeningAccount);
-        creditCard = new CreditCard(ownerName, cardNumber, cvv2, expirationDate);
+        if (cardNumber.length() == 16) {
+            creditCard = new CreditCard(ownerName, cardNumber, cvv2, expirationDate);
+            System.out.println("creditCard created!");
+        } else System.out.println("creditCard not created!");
     }
 
     public CreditCard getCreditCard() {
