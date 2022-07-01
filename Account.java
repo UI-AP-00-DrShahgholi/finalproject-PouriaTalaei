@@ -5,8 +5,6 @@ public class Account {
     private String dateOfOpeningAccount;
     private int negativePoint;
 
-
-
     public Account(String accountNumber, String ownerNationalCode, int balance, String dateOfOpeningAccount) {
         this.accountNumber = accountNumber;
         this.ownerNationalCode = ownerNationalCode;
@@ -16,7 +14,6 @@ public class Account {
     }
 
     public Account() {
-
     }
 
     public String getAccountNumber() {

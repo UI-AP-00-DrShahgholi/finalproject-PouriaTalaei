@@ -5,9 +5,9 @@ import java.sql.SQLException;
 public class UserManagement {
 
 
-    public void insertAccounts(String accountNumber, String ownerNationalCode, int balance, String dateOfOpeningAccount, int negativePoint) throws Exception {
+    public void insertAccounts(String accountNumber, String ownerNationalCode, int balance, String dateOfOpeningAccount) throws Exception {
         Connection connection = MySQLConnection.connectionSql();
-        String sqlCmd = String.format("INSERT INTO accounts (ID,AccountNumber,OwnerNationalCode,Balance,DateOfOpeningAccount,NegativePoint) values (%s,'%s','%s',%s,'%s',%s)", getMaxAccountsID() + 1, accountNumber, ownerNationalCode, balance, dateOfOpeningAccount, negativePoint);
+        String sqlCmd = String.format("INSERT INTO accounts (ID,AccountNumber,OwnerNationalCode,Balance,DateOfOpeningAccount,NegativePoint) values (%s,'%s','%s',%s,'%s',%s)", getMaxAccountsID() + 1, accountNumber, ownerNationalCode, balance, dateOfOpeningAccount, 0);
         if (MySQLConnection.executeSQL(connection, sqlCmd))
             System.out.println("insert successfully!");
         else
