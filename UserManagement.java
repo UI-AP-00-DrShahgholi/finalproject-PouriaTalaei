@@ -28,12 +28,13 @@ public class UserManagement {
         Connection connection = MySQLConnection.connectionSql();
         String sqlCmd = String.format("SELECT * from accounts WHERE ID =%s", iD);
         ResultSet resultSet = MySQLConnection.executeQuerySQL(connection, sqlCmd);
-        Account account = new Account();
-        account = setAccount(resultSet);
-        return account;
-
+        Account account;//= new Account();
+        if (resultSet.next()) {
+            account = setAccount(resultSet);
+            return account;
+        }
         //printPerson(person);
-
+        return null;
     }
 
     public Account setAccount(ResultSet resultSet) throws SQLException {

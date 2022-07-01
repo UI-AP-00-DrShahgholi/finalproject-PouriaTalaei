@@ -35,19 +35,23 @@ public class AdminManagement {
         Connection connection = MySQLConnection.connectionSql();
         String sqlCmd = String.format("SELECT * from people WHERE NationalCode =%s", nationalCode);
         ResultSet resultSet = MySQLConnection.executeQuerySQL(connection, sqlCmd);
-        Person person = new Person();
-        person = setPerson(resultSet);
-        printPerson(person);
+        Person person;//= new Person();
+        // assert resultSet != null;
+        if (resultSet.next()) {
+            person = setPerson(resultSet);
+
+            printPerson(person);
+        }
     }
 
     public Person setPerson(ResultSet resultSet) throws SQLException {
         Person person;
         person = new Person();
-        person.setNationalCode(Integer.parseInt(resultSet.getString("NationalCode")));
+        person.setNationalCode(resultSet.getInt("NationalCode"));
         person.setName(resultSet.getString("Name"));
-        person.setAge(Integer.parseInt(resultSet.getString("Age")));
+        person.setAge(resultSet.getInt("Age"));
         person.setSex(resultSet.getString("Sex"));
-        person.setWallet(Integer.parseInt(resultSet.getString("DigitalWallet")));
+        person.setWallet(resultSet.getInt("DigitalWallet"));
         return person;
     }
 
@@ -64,7 +68,10 @@ public class AdminManagement {
         Connection connection = MySQLConnection.connectionSql();
         String sqlCmd = String.format("SELECT DigitalWallet from people WHERE NationalCode=%s", nationalCode);
         ResultSet resultSet = MySQLConnection.executeQuerySQL(connection, sqlCmd);
-        return resultSet.getInt(1);
+        if (resultSet.next()) {
+            return resultSet.getInt(1);
+        }
+        return 0;
     }
 
 
@@ -72,14 +79,20 @@ public class AdminManagement {
         Connection connection = MySQLConnection.connectionSql();
         String sqlCmd = String.format("SELECT Balance from accounts WHERE OwnerNationalCode='%s'", nationalCode);
         ResultSet resultSet = MySQLConnection.executeQuerySQL(connection, sqlCmd);
-        return resultSet.getInt(1);
+        if (resultSet.next()) {
+            return resultSet.getInt(1);
+        }
+        return 0;
     }
 
     public static int loadCost(int nationalCode) throws Exception {
         Connection connection = MySQLConnection.connectionSql();
         String sqlCmd = String.format("SELECT Cost from estate WHERE OwnerNationalCode=%s", nationalCode);
         ResultSet resultSet = MySQLConnection.executeQuerySQL(connection, sqlCmd);
-        return resultSet.getInt(1);
+        if (resultSet.next()) {
+            return resultSet.getInt(1);
+        }
+        return 0;
     }
 
     public void updateWalletAfterSell(int ownerNationalCode) throws Exception {
@@ -126,9 +139,11 @@ public class AdminManagement {
         Connection connection = MySQLConnection.connectionSql();
         String sqlCmd = String.format("SELECT * from estate WHERE ID =%s", iD);
         ResultSet resultSet = MySQLConnection.executeQuerySQL(connection, sqlCmd);
-        Estate estate = new Estate();
-        estate = setEstate(resultSet);
-        printEstate(estate);
+        Estate estate;// = new Estate();
+        if (resultSet.next()) {
+            estate = setEstate(resultSet);
+            printEstate(estate);
+        }
     }
 
     public Estate setEstate(ResultSet resultSet) throws SQLException {

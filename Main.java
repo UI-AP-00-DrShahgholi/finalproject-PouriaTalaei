@@ -3,8 +3,12 @@ import java.sql.*;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        Scanner input = new Scanner(System.in);
-        MySQLConnection mySQLConnection = new MySQLConnection();
+
+       Panel.printPanel();
+
+
+//        Scanner input = new Scanner(System.in);
+//        MySQLConnection mySQLConnection = new MySQLConnection();
         //mySQLConnection.executeSQL();
 //
 //        Class.forName("com.mysql.cj.jdbc.Driver");

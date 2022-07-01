@@ -1,11 +1,12 @@
 import java.util.Scanner;
 
 public class Panel {
-    public static void printPanel() {
+    public static void printPanel() throws Exception {
         Scanner input = new Scanner(System.in);
         Admin admin = Admin.getInstance();
         AdminManagement adminManagement = new AdminManagement();
-
+        RegistrationSystemEstatePanel estatePanel = new RegistrationSystemEstatePanel();
+        RegistrationSystemPeoplePanel peoplePanel = new RegistrationSystemPeoplePanel();
         //boolean login;
         boolean exit = false;
         while (!exit) {
@@ -15,7 +16,11 @@ public class Panel {
 
             switch (input.next()) {
                 case "1"://people
+                    peoplePanel.peoplePanel(adminManagement);
+                    break;
 
+                case "2":
+                    estatePanel.estatePanel(adminManagement);
                     break;
                      /*   System.out.println("Enter username & password");
                         if (manager.adminLogin(input.next(), input.next())) {
