@@ -72,5 +72,4 @@ public class BankLoan {
         // else وام دادن
 
     }
-
 }

@@ -55,5 +55,4 @@ public class Account {
     public void setNegativePoint(int negativePoint) {
         this.negativePoint = negativePoint;
     }
-
 }

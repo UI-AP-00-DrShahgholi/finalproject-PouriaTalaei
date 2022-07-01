@@ -22,13 +22,13 @@ public class OpeningAccount {
         userManagement.insertAccounts(accountNumber, ownerNationalCode, balance, dateOfOpeningAccount);
     }
 
-    public void openFreeLoanAccount(String accountNumber, String ownerNationalCode, int balance, String dateOfOpeningAccount,String ownerName, String cardNumber, int cvv2, String expirationDate) throws Exception {
-       FreeLoanAccount freeLoanAccount = new FreeLoanAccount(accountNumber,ownerNationalCode,balance,dateOfOpeningAccount,ownerName,cardNumber,cvv2,expirationDate);
+    public void openFreeLoanAccount(String accountNumber, String ownerNationalCode, int balance, String dateOfOpeningAccount, String ownerName, String cardNumber, int cvv2, String expirationDate) throws Exception {
+        FreeLoanAccount freeLoanAccount = new FreeLoanAccount(accountNumber, ownerNationalCode, balance, dateOfOpeningAccount, ownerName, cardNumber, cvv2, expirationDate);
         userManagement.insertAccounts(accountNumber, ownerNationalCode, balance, dateOfOpeningAccount);
     }
 
     public void openCurrentAccount(String accountNumber, String ownerNationalCode, int balance, String dateOfOpeningAccount, String ownerName, String cardNumber, int cvv2, String expirationDate, int checkNumber, int page) throws Exception {
-        CurrentAccount currentAccount = new CurrentAccount(accountNumber, ownerNationalCode, balance, dateOfOpeningAccount,ownerName,cardNumber,cvv2,expirationDate,checkNumber,page);
+        CurrentAccount currentAccount = new CurrentAccount(accountNumber, ownerNationalCode, balance, dateOfOpeningAccount, ownerName, cardNumber, cvv2, expirationDate, checkNumber, page);
         userManagement.insertAccounts(accountNumber, ownerNationalCode, balance, dateOfOpeningAccount);
     }
 }

@@ -34,6 +34,10 @@ public class Panel {
                 case "5":
                     exit = true;
                     break;
+
+                default:
+                    System.out.println("Enter carefully!");
+                    break;
             }
         }
     }

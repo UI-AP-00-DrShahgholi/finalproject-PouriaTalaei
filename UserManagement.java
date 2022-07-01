@@ -4,7 +4,6 @@ import java.sql.SQLException;
 
 public class UserManagement {
 
-
     public void insertAccounts(String accountNumber, String ownerNationalCode, int balance, String dateOfOpeningAccount) throws Exception {
         Connection connection = MySQLConnection.connectionSql();
         String sqlCmd = String.format("INSERT INTO accounts (ID,AccountNumber,OwnerNationalCode,Balance,DateOfOpeningAccount,NegativePoint) values (%s,'%s','%s',%s,'%s',%s)", getMaxAccountsID() + 1, accountNumber, ownerNationalCode, balance, dateOfOpeningAccount, 0);
@@ -23,12 +22,11 @@ public class UserManagement {
             System.out.println("Update not successfully!");
     }
 
-
     public Account loadAccount(int iD) throws Exception {
         Connection connection = MySQLConnection.connectionSql();
         String sqlCmd = String.format("SELECT * from accounts WHERE ID =%s", iD);
         ResultSet resultSet = MySQLConnection.executeQuerySQL(connection, sqlCmd);
-        Account account;//= new Account();
+        Account account;
         if (resultSet.next()) {
             account = setAccount(resultSet);
             return account;
@@ -54,7 +52,6 @@ public class UserManagement {
         System.out.println("Date Of Opening Account : " + account.getDateOfOpeningAccount());
         System.out.println("Negative Point : " + account.getNegativePoint());
     }
-
 
     public int getMaxAccountsID() throws Exception {
         Connection connection = MySQLConnection.connectionSql();

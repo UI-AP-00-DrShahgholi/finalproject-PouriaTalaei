@@ -3,7 +3,6 @@ import java.util.Scanner;
 public class BankSystemPanel {
     public void bankPanel() throws Exception {
         Scanner input = new Scanner(System.in);
-        UserManagement userManagement = new UserManagement();
         AdminManagement adminManagement = new AdminManagement();
         OpenAccountPanel openAccountPanel = new OpenAccountPanel();
         BankingOperations bankingOperations = new BankingOperations();
@@ -18,7 +17,7 @@ public class BankSystemPanel {
                             "6.Back");
 
             switch (input.next()) {
-                case "1"://insert
+                case "1":
                     openAccountPanel.openAccountPanel();
                     break;
 
@@ -46,7 +45,9 @@ public class BankSystemPanel {
                     again = false;
                     break;
 
-            }
+                default:
+                    System.out.println("Enter carefully!");
+                    break;            }
         }
     }
 }

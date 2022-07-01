@@ -15,20 +15,19 @@ public class DepositAccountPanel {
                     "Back(ba) ");
             String inputMenu = input.next();
             switch (inputMenu) {
-                case "sh"://insert
+                case "sh":
                     System.out.println("Enter : AccountNumber, OwnerNationalCode, Balance, DateOfOpeningAccount ");
-                    openingAccount.openShortTermDepositAccount(inputMenu,input.next(),input.next(),input.nextInt(),input.next());
+                    openingAccount.openShortTermDepositAccount(inputMenu, input.next(), input.next(), input.nextInt(), input.next());
                     break;
 
                 case "lo":
                     System.out.println("Enter : AccountNumber, OwnerNationalCode, Balance, DateOfOpeningAccount ");
-                    openingAccount.openLongTermDepositAccount(inputMenu,input.next(),input.next(),input.nextInt(),input.next());
-
+                    openingAccount.openLongTermDepositAccount(inputMenu, input.next(), input.next(), input.nextInt(), input.next());
                     break;
 
                 case "sp":
                     System.out.println("Enter : AccountNumber, OwnerNationalCode, Balance, DateOfOpeningAccount ");
-                    openingAccount.openSpecialDepositAccount(inputMenu,input.next(),input.next(),input.nextInt(),input.next());
+                    openingAccount.openSpecialDepositAccount(inputMenu, input.next(), input.next(), input.nextInt(), input.next());
                     break;
 
                 case "ba":

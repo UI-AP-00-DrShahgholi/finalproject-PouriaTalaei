@@ -3,7 +3,6 @@ import java.util.Scanner;
 public class OpenAccountPanel {
     public void openAccountPanel() throws Exception {
         Scanner input = new Scanner(System.in);
-        UserManagement userManagement = new UserManagement();
         OpeningAccount openingAccount = new OpeningAccount();
         DepositAccountPanel depositAccountPanel = new DepositAccountPanel();
         boolean again = true;
@@ -19,16 +18,20 @@ public class OpenAccountPanel {
 
                 case "2":
                     System.out.println("Enter : AccountNumber, OwnerNationalCode, Balance, DateOfOpeningAccount, OwnerName, CardNumber, CVV2, ExpirationDate, CheckNumber, Page");
-                    openingAccount.openCurrentAccount(input.next(),input.next(),input.nextInt(),input.next(),input.next(),input.next(),input.nextInt(),input.next(),input.nextInt(),input.nextInt());
+                    openingAccount.openCurrentAccount(input.next(), input.next(), input.nextInt(), input.next(), input.next(), input.next(), input.nextInt(), input.next(), input.nextInt(), input.nextInt());
                     break;
 
                 case "3":
                     System.out.println("Enter : AccountNumber, OwnerNationalCode, Balance, DateOfOpeningAccount, OwnerName, CardNumber, CVV2, ExpirationDate");
-                    openingAccount.openFreeLoanAccount(input.next(),input.next(),input.nextInt(),input.next(),input.next(),input.next(),input.nextInt(),input.next());
+                    openingAccount.openFreeLoanAccount(input.next(), input.next(), input.nextInt(), input.next(), input.next(), input.next(), input.nextInt(), input.next());
                     break;
 
                 case "4":
                     again = false;
+                    break;
+
+                default:
+                    System.out.println("Enter carefully!");
                     break;
             }
         }

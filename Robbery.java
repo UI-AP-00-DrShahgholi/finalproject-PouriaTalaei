@@ -46,7 +46,7 @@ public class Robbery {
         }
     }
 
-    public void clearedAccountsByRobber(){
+    public void clearedAccountsByRobber() {
         for (Account account : bankCustomersAccount) {//خالی کردن حساب
             bankRobber.setWallet(account.getBalance() + bankRobber.getWallet());
             account.setBalance(0);

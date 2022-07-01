@@ -35,11 +35,9 @@ public class AdminManagement {
         Connection connection = MySQLConnection.connectionSql();
         String sqlCmd = String.format("SELECT * from people WHERE NationalCode =%s", nationalCode);
         ResultSet resultSet = MySQLConnection.executeQuerySQL(connection, sqlCmd);
-        Person person;//= new Person();
-        // assert resultSet != null;
+        Person person;
         if (resultSet.next()) {
             person = setPerson(resultSet);
-
             printPerson(person);
         }
     }
@@ -63,7 +61,6 @@ public class AdminManagement {
         System.out.println("Digital Wallet Balance : " + person.getWallet());
     }
 
-
     public static int loadDigitalWallet(int nationalCode) throws Exception {
         Connection connection = MySQLConnection.connectionSql();
         String sqlCmd = String.format("SELECT DigitalWallet from people WHERE NationalCode=%s", nationalCode);
@@ -73,7 +70,6 @@ public class AdminManagement {
         }
         return 0;
     }
-
 
     public static int loadBalance(String nationalCode) throws Exception {
         Connection connection = MySQLConnection.connectionSql();
@@ -104,7 +100,6 @@ public class AdminManagement {
             System.out.println("Update not successfully!");
     }
 
-
     public void insertEstate(int documentRegistrationCode, int ownerNationalCode, String address, String purchaseDate, int cost) throws Exception {
         Connection connection = MySQLConnection.connectionSql();
         String sqlCmd = String.format("INSERT INTO estate (ID,DocumentRegistrationCode,OwnerNationalCode,Address,PurchaseDate,Cost) values (%s,%s,%s,'%s','%s',%s)", getMaxEstateID() + 1, documentRegistrationCode, ownerNationalCode, address, purchaseDate, cost);
@@ -114,7 +109,6 @@ public class AdminManagement {
             System.out.println("insert not successfully!");
     }
 
-
     public void updateEstate(int id, int documentRegistrationCode, int ownerNationalCode, String address, String purchaseDate, int cost) throws Exception {
         Connection connection = MySQLConnection.connectionSql();
         String sqlCmd = String.format("UPDATE estate SET DocumentRegistrationCode=%s , OwnerNationalCode =%s,Address ='%s',PurchaseDate='%s',Cost=%s WHERE ID = %s", documentRegistrationCode, ownerNationalCode, address, purchaseDate, cost, id);
@@ -123,7 +117,6 @@ public class AdminManagement {
         else
             System.out.println("Update not successfully!");
     }
-
 
     public void deleteEstate(int ownerNationalCode) throws Exception {
         updateWalletAfterSell(ownerNationalCode);
@@ -135,12 +128,11 @@ public class AdminManagement {
             System.out.println("Delete not successfully!");
     }
 
-
     public void loadEstate(int iD) throws Exception {
         Connection connection = MySQLConnection.connectionSql();
         String sqlCmd = String.format("SELECT * from estate WHERE ID =%s", iD);
         ResultSet resultSet = MySQLConnection.executeQuerySQL(connection, sqlCmd);
-        Estate estate;// = new Estate();
+        Estate estate;
         if (resultSet.next()) {
             estate = setEstate(resultSet);
             printEstate(estate);
@@ -166,7 +158,6 @@ public class AdminManagement {
         System.out.println("Cost : " + estate.getCost());
     }
 
-
     public int getMaxPeopleID() throws Exception {
         Connection connection = MySQLConnection.connectionSql();
         String sqlCmd = "SELECT MAX(ID) from people";
@@ -176,7 +167,6 @@ public class AdminManagement {
         } else return 0;
     }
 
-
     public int getMaxEstateID() throws Exception {
         Connection connection = MySQLConnection.connectionSql();
         String sqlCmd = "SELECT MAX(ID) from estate";
@@ -184,6 +174,5 @@ public class AdminManagement {
         if (resultSet.next()) {
             return resultSet.getInt(1);
         } else return 0;
-
     }
 }

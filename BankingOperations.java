@@ -1,8 +1,6 @@
 import java.sql.Connection;
 
 public class BankingOperations {
-
-
     public void depositProcess(String ownerNationalCode, String accountNumber, int money) throws Exception {
         Connection connection = MySQLConnection.connectionSql();
         String sqlCmd1 = String.format("UPDATE accounts SET Balance =%s WHERE  OwnerNationalCode ='%s' and AccountNumber='%s'", money + AdminManagement.loadBalance(ownerNationalCode), ownerNationalCode, accountNumber);

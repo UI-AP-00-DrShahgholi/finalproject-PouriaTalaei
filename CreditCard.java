@@ -1,5 +1,3 @@
-import java.math.BigInteger;
-
 public class CreditCard {
     private String ownerName;
     private String cardNumber;
