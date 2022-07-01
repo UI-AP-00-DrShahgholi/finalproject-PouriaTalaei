@@ -33,7 +33,6 @@ public class UserManagement {
             account = setAccount(resultSet);
             return account;
         }
-        //printPerson(person);
         return null;
     }
 
@@ -65,6 +64,4 @@ public class UserManagement {
             return resultSet.getInt(1);
         } else return 0;
     }
-
-//String accountNumber, String ownerNationalCode, int balance, String dateOfOpeningAccount)
 }

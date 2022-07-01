@@ -125,9 +125,10 @@ public class AdminManagement {
     }
 
 
-    public void deleteEstate(int iD) throws Exception {
+    public void deleteEstate(int ownerNationalCode) throws Exception {
+        updateWalletAfterSell(ownerNationalCode);
         Connection connection = MySQLConnection.connectionSql();
-        String sqlCmd = String.format("DELETE from estate WHERE ID = %s", iD);
+        String sqlCmd = String.format("DELETE from estate WHERE OwnerNationalCode = %s", ownerNationalCode);
         if (MySQLConnection.executeSQL(connection, sqlCmd))
             System.out.println("Delete successfully!");
         else
